@@ -12,7 +12,6 @@ const useFetchData = (url: string | undefined) => {
     setIsError(null);
     try {
       const res = await axiosInstance.get(url);
-      console.log("API Response:", res); 
       if (res.status === 200) {
         setData(res.data.data);
       }

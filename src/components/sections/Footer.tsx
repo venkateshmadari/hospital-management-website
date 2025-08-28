@@ -6,7 +6,7 @@ const Footer = () => {
     navigate("/");
   };
   return (
-    <footer className=" bg-white/80 backdrop-blur-sm border-t border-gray-200 py-3 z-40">
+    <footer className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-t border-gray-200 py-3 z-40">
       <div className="container mx-auto">
         <div className="flex items-center justify-between text-sm px-4">
           <p className="text-muted-foreground">Made with ❤️ by Venkatesh</p>

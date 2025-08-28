@@ -8,6 +8,7 @@ import RegisterPage from "@/pages/auth/RegisterPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import BookAppointment from "@/containers/BookAppointment";
+import Appointments from "@/containers/Appointments";
 const AdminRoutes = () => {
   return (
     <Router>
@@ -22,6 +23,7 @@ const AdminRoutes = () => {
 
         <Route element={<PrivateRoutes />}>
           <Route path="/book-appointment" element={<BookAppointment />} />
+          <Route path="/appointments" element={<Appointments />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

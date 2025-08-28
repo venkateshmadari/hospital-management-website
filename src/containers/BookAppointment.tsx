@@ -10,6 +10,7 @@ const BookAppointment = () => {
   const [isError, setIsError] = useState<string | null>(null);
   const { user } = useAuth();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
+  const [resetFormTrigger, setResetFormTrigger] = useState<number>(0);
 
   const handleBookAppointment = async (appointmentData: {
     doctorId: string;
@@ -29,6 +30,7 @@ const BookAppointment = () => {
       if (response?.status === 201) {
         toast.success(response?.data?.message);
         setToggleModal(true);
+        setResetFormTrigger(Date.now());
       }
     } catch (error: any) {
       const errorMessage =
@@ -48,6 +50,7 @@ const BookAppointment = () => {
         handleSubmit={handleBookAppointment}
         appointmentLoading={loading}
         appointmentError={isError}
+        resetFormTrigger={resetFormTrigger}
       />
       <AppointmentSucessfullModal
         open={toggleModal}

@@ -6,6 +6,8 @@ import { useState, useRef, useEffect } from "react";
 import { LogOut, User } from "lucide-react";
 import SignOutModal from "../modals/SignOutModal";
 import ProfileSheet from "../modals/ProfileSheet";
+import { Link } from "react-router-dom";
+import { IoTicket } from "react-icons/io5";
 
 const Header = () => {
   const { user, loading } = useAuth();
@@ -91,6 +93,13 @@ const Header = () => {
                     <User className="w-4 h-4 mr-2" />
                     Profile
                   </button>
+                  <Link
+                    className="w-full flex items-center px-4 py-2 text-sm  hover:bg-gray-100 cursor-pointer"
+                    to={"/appointments"}
+                  >
+                    <IoTicket className="w-4 h-4 mr-2" />
+                    Appointments
+                  </Link>
 
                   <button
                     onClick={handleLogout}

@@ -55,12 +55,14 @@ interface AppointmentPageProps {
   }) => void;
   appointmentLoading: boolean;
   appointmentError: string | null;
+  resetFormTrigger?: number;
 }
 
 const AppointmentPage = ({
   handleSubmit: onSubmitAppointment,
   appointmentLoading,
   appointmentError,
+  resetFormTrigger,
 }: AppointmentPageProps) => {
   const specialities = [
     { value: "generalPhysician", label: "General Physician" },
@@ -82,6 +84,7 @@ const AppointmentPage = ({
     watch,
     setValue,
     resetField,
+    reset,
     formState: { errors },
   } = useForm<AppointmentInputs>();
 
@@ -93,7 +96,14 @@ const AppointmentPage = ({
   const selectedSpeciality = watch("speciality");
   const selectedDoctor = watch("doctor");
 
-  // Reset doctor and time slots when speciality changes
+  useEffect(() => {
+    if (resetFormTrigger) {
+      reset(); // reset form fields
+      setSelectedSlot(null);
+      setSelectedDoctorData(null);
+    }
+  }, [resetFormTrigger, reset]);
+
   useEffect(() => {
     if (selectedSpeciality) {
       resetField("doctor");

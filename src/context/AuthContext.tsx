@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       formData.append("image", file);
 
       const response = await axiosInstance.post(
-        `/doctors/${user?.id}/upload-image`,
+        `/profile/${user?.id}/upload-image`,
         formData,
         {
           headers: {
