@@ -1,9 +1,21 @@
 import { Calendar, Clock, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const MainSection = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleMoveToAppointment = () => {
+    if (user) {
+      navigate("/book-appointment");
+    } else {
+      navigate("/auth/login");
+    }
+  };
   return (
-    <div className="relative bg-gradient-to-br from-violet-500/20 via-white to-violet-500/20 min-h-screen flex items-center overflow-hidden">
+    <div className="relative bg-gradient-to-br from-violet-500/20 via-white to-violet-500/20 min-h-screen flex items-center overflow-hidden mt-9 md:mt-0">
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -14,7 +26,7 @@ const MainSection = () => {
                   <Stethoscope className="w-4 h-4" />
                   Trusted Healthcare Provider
                 </div>
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   <span className="text-foreground">Book Your</span>
                   <br />
                   <span className="bg-gradient-to-r from-primary  via-violet-800 to-primary bg-clip-text text-transparent">
@@ -29,7 +41,10 @@ const MainSection = () => {
                 </p>
               </div>
 
-              <Button className="rounded-xl cursor-pointer">
+              <Button
+                className="rounded-xl cursor-pointer"
+                onClick={handleMoveToAppointment}
+              >
                 <Calendar className="w-5 h-5 mr-1" />
                 Book Appointment
               </Button>

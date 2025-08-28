@@ -1,0 +1,43 @@
+import axiosInstance from "@/instance/instance";
+import { useEffect, useState } from "react";
+
+const useFetchData = (url: string | undefined) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<string | null>(null);
+  const [data, setData] = useState<any>();
+
+  const fetchData = async () => {
+    if (!url) return;
+    setIsLoading(true);
+    setIsError(null);
+    try {
+      const res = await axiosInstance.get(url);
+      console.log("API Response:", res); 
+      if (res.status === 200) {
+        setData(res.data.data);
+      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        error?.message;
+      setIsError(errorMessage);
+      console.error("API Error:", error); 
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [url]); 
+
+  return {
+    isLoading,
+    isError,
+    data,
+    setData,
+    fetchData,
+  };
+};
+export default useFetchData;

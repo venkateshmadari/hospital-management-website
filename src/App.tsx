@@ -1,16 +1,13 @@
-import Footer from "./components/sections/Footer";
-import Header from "./components/sections/Header";
-import MainSection from "./components/sections/MainSection";
-import SpecialitiesSection from "./components/sections/SpecialitiesSection";
+import { Toaster } from "react-hot-toast";
+import AdminRoutes from "./Routes/AdminRoutes";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <MainSection />
-      <SpecialitiesSection />
-      <Footer />
-    </div>
+    <AuthProvider>
+      <Toaster position="bottom-right" reverseOrder={false} />
+      <AdminRoutes />
+    </AuthProvider>
   );
 };
 
