@@ -42,7 +42,7 @@ const MainSection = () => {
               </div>
 
               <Button
-                className="rounded-xl cursor-pointer"
+                className="rounded-md cursor-pointer py-5.5"
                 onClick={handleMoveToAppointment}
               >
                 <Calendar className="w-5 h-5 mr-1" />
