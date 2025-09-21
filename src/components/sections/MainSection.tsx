@@ -15,7 +15,7 @@ const MainSection = () => {
     }
   };
   return (
-    <div className="relative bg-gradient-to-br from-violet-500/20 via-white to-violet-500/20 min-h-screen flex items-center overflow-hidden mt-9 md:mt-0">
+    <div className="relative bg-gradient-to-br from-violet-500/20 via-white to-violet-500/20 min-h-screen flex items-center overflow-hidden mt-9">
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
